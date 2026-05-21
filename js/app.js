@@ -377,7 +377,7 @@ function initPetDrag() {
   });
 }
 
-// ========== 宠物点击（单击开菜单，双击开分区页） ==========
+// ========== 宠物点击（单击显示随机台词，双击开分区页） ==========
 function initPetClick() {
   const fab = document.getElementById('pet-fab');
   fab.addEventListener('click', (e) => {
@@ -390,7 +390,7 @@ function initPetClick() {
       openCategoryPage();
       lastPetTapTime = 0;
     } else {
-      // 单击 → 开关菜单
+      // 单击 → 显示随机台词
       lastPetTapTime = now;
       setTimeout(() => {
         if (lastPetTapTime !== 0 && Date.now() - lastPetTapTime >= 320) {
@@ -610,24 +610,19 @@ function showBubble(text, duration) {
   const bubble = document.getElementById('speech-bubble');
   bubble.textContent = text;
   bubble.classList.add('show');
-  setCatTalking(true);
   if (bubbleHideTimer) clearTimeout(bubbleHideTimer);
   bubbleHideTimer = setTimeout(() => {
     bubble.classList.remove('show');
-    setCatTalking(false);
   }, duration || 3500);
 }
 
 function setCatTalking(talking) {
   isTalking = talking;
   const eyes = document.querySelectorAll('.cat-eye');
-  const mouth = document.getElementById('cat-mouth');
   if (talking) {
     eyes.forEach(e => e.classList.add('cat-eye-happy'));
-    mouth.querySelector('path').classList.add('cat-mouth-talking');
   } else {
     eyes.forEach(e => e.classList.remove('cat-eye-happy'));
-    mouth.querySelector('path').classList.remove('cat-mouth-talking');
   }
 }
 
@@ -657,7 +652,7 @@ function startRandomActions() {
   actionTimer = setInterval(() => {
     if (isSleeping || isPetHidden || isTalking) return;
     triggerRandomAction();
-  }, 25000); // 每25秒随机触发一个动作
+  }, 25000);
 }
 
 function triggerRandomAction() {
@@ -670,10 +665,8 @@ function playCatAction(action) {
   const svg = document.getElementById('cat-svg');
   if (!svg) return;
   
-  // 清除之前的动作
   svg.classList.remove('cat-stretching', 'cat-playing', 'cat-drinking', 'cat-peeking', 'cat-yawning');
   
-  // 触发新动作
   const actionMap = {
     stretch: 'cat-stretching',
     play: 'cat-playing',
@@ -685,7 +678,6 @@ function playCatAction(action) {
   svg.classList.add(actionMap[action]);
   currentAction = action;
   
-  // 动作结束后移除class
   const durations = { stretch: 1500, play: 2400, drink: 2400, peek: 2000, yawn: 1500 };
   setTimeout(() => {
     svg.classList.remove(actionMap[action]);

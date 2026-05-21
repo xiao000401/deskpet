@@ -397,81 +397,11 @@ html, body {
   0%, 8%, 12%, 100% { transform: scaleY(1); }
   10% { transform: scaleY(0.05); }
 }
-.cat-mouth-talking { animation: mouthTalk 0.3s infinite ease-in-out; }
-@keyframes mouthTalk {
-  0%, 100% { transform: scaleY(1); }
-  50% { transform: scaleY(1.8); }
-}
 .cat-eye-happy { animation: eyeHappy 0.8s infinite ease-in-out !important; }
 @keyframes eyeHappy {
   0%, 100% { transform: scaleY(1) rotate(0deg); }
   50% { transform: scaleY(0.6) rotate(-5deg); }
 }
-.sleep-zzz {
-  position: absolute;
-  top: -8px; right: -2px;
-  font-size: 12px;
-  color: #7c4dff;
-  opacity: 0;
-  pointer-events: none;
-}
-.sleep-zzz.active { animation: zzzFloat 2s infinite ease-in-out; }
-@keyframes zzzFloat {
-  0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
-  30% { opacity: 1; }
-  100% { opacity: 0; transform: translate(12px, -25px) scale(1.1); }
-}
-.sleep-zzz:nth-child(2).active { animation-delay: 0.7s; }
-.sleep-zzz:nth-child(3).active { animation-delay: 1.4s; }
-
-/* ========== 多动作动画 ========== */
-/* 伸懒腰动画 */
-@keyframes catStretch {
-  0%, 100% { transform: translateY(0) scaleY(1); }
-  30% { transform: translateY(-3px) scaleY(1.08); }
-  60% { transform: translateY(1px) scaleY(0.95); }
-}
-.cat-stretching { animation: catStretch 1.5s ease-in-out; }
-
-/* 玩球动画 */
-@keyframes catPlay {
-  0%, 100% { transform: translateX(0) rotate(0deg); }
-  25% { transform: translateX(3px) rotate(5deg); }
-  50% { transform: translateX(-2px) rotate(-3deg); }
-  75% { transform: translateX(2px) rotate(3deg); }
-}
-.cat-playing { animation: catPlay 0.8s ease-in-out 3; }
-
-/* 喝水动画 */
-@keyframes catDrink {
-  0%, 100% { transform: rotate(0deg); }
-  30% { transform: rotate(8deg) translateY(2px); }
-  60% { transform: rotate(-3deg); }
-}
-.cat-drinking { animation: catDrink 1.2s ease-in-out 2; }
-
-/* 探头动画 */
-@keyframes catPeek {
-  0%, 100% { transform: translateY(0); }
-  40% { transform: translateY(-6px); }
-  70% { transform: translateY(-4px); }
-}
-.cat-peeking { animation: catPeek 1s ease-in-out 2; }
-
-/* 打哈欠动画 */
-@keyframes catYawn {
-  0%, 100% { transform: scaleY(1); }
-  40% { transform: scaleY(1.3); }
-  70% { transform: scaleY(1.1); }
-}
-.cat-yawning { animation: catYawn 1.5s ease-in-out; }
-
-/* 晚安/睡觉动画 */
-@keyframes catSleep {
-  0%, 100% { transform: translateY(0) scaleY(1); }
-  50% { transform: translateY(1px) scaleY(0.97); }
-}
-.cat-sleeping-anim { animation: catSleep 2.5s ease-in-out infinite; }
 
 /* ========== 气泡 ========== */
 #speech-bubble {
@@ -524,6 +454,72 @@ html, body {
   white-space: nowrap;
   border: 1px solid rgba(255,255,255,0.1);
 }
+
+/* ========== 多动作动画 ========== */
+/* 伸懒腰动画 */
+@keyframes catStretch {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  30% { transform: translateY(-3px) scaleY(1.08); }
+  60% { transform: translateY(1px) scaleY(0.95); }
+}
+.cat-stretching { animation: catStretch 1.5s ease-in-out; }
+
+/* 玩球动画 */
+@keyframes catPlay {
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(3px) rotate(5deg); }
+  50% { transform: translateX(-2px) rotate(-3deg); }
+  75% { transform: translateX(2px) rotate(3deg); }
+}
+.cat-playing { animation: catPlay 0.8s ease-in-out 3; }
+
+/* 喝水动画 */
+@keyframes catDrink {
+  0%, 100% { transform: rotate(0deg); }
+  30% { transform: rotate(8deg) translateY(2px); }
+  60% { transform: rotate(-3deg); }
+}
+.cat-drinking { animation: catDrink 1.2s ease-in-out 2; }
+
+/* 探头动画 */
+@keyframes catPeek {
+  0%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-6px); }
+  70% { transform: translateY(-4px); }
+}
+.cat-peeking { animation: catPeek 1s ease-in-out 2; }
+
+/* 打哈欠动画 */
+@keyframes catYawn {
+  0%, 100% { transform: scaleY(1); }
+  40% { transform: scaleY(1.3); }
+  70% { transform: scaleY(1.1); }
+}
+.cat-yawning { animation: catYawn 1.5s ease-in-out; }
+
+/* 晚安/睡觉动画 */
+@keyframes catSleep {
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  50% { transform: translateY(1px) scaleY(0.97); }
+}
+.cat-sleeping-anim { animation: catSleep 2.5s ease-in-out infinite; }
+
+.sleep-zzz {
+  position: absolute;
+  top: -8px; right: -2px;
+  font-size: 12px;
+  color: #7c4dff;
+  opacity: 0;
+  pointer-events: none;
+}
+.sleep-zzz.active { animation: zzzFloat 2s infinite ease-in-out; }
+@keyframes zzzFloat {
+  0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translate(12px, -25px) scale(1.1); }
+}
+.sleep-zzz:nth-child(2).active { animation-delay: 0.7s; }
+.sleep-zzz:nth-child(3).active { animation-delay: 1.4s; }
 
 /* ========== 圆形菜单 ========== */
 #circle-menu {
