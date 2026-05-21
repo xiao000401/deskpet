@@ -386,44 +386,27 @@ html, body {
 #pet-fab.snapped-left .cat-eye,
 #pet-fab.snapped-right .cat-eye { animation: none; }
 
-/* ========== 小猫 SVG 动画 - 像素风格 ========== */
-/* 像素风格呼吸动画 - 离散跳跃 */
-#cat-svg { image-rendering: pixelated; }
-.cat-body { animation: catBreathe 3.2s infinite steps(2); transform-origin: center bottom; }
+/* ========== 小猫 SVG 动画 ========== */
+.cat-body { animation: catBreathe 3.2s infinite ease-in-out; transform-origin: center bottom; }
 @keyframes catBreathe {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-1px); }
+  0%, 100% { transform: scaleY(1) translateY(0); }
+  50% { transform: scaleY(1.02) translateY(-1px); }
 }
-
-/* 像素风格眨眼 - 完全关闭再打开 */
-.cat-eye { animation: catBlink 8s infinite steps(1); transform-origin: center center; }
+.cat-eye { animation: catBlink 10s infinite ease-in-out; transform-origin: center center; }
 @keyframes catBlink {
-  0%, 90%, 100% { transform: scaleY(1); }
-  92%, 98% { transform: scaleY(0); }
+  0%, 8%, 12%, 100% { transform: scaleY(1); }
+  10% { transform: scaleY(0.05); }
 }
-
-/* 像素风格说话动画 - 嘴巴开合 */
-.cat-mouth-talking { animation: mouthTalk 0.25s infinite steps(2); }
+.cat-mouth-talking { animation: mouthTalk 0.3s infinite ease-in-out; }
 @keyframes mouthTalk {
   0%, 100% { transform: scaleY(1); }
-  50% { transform: scaleY(1.5); }
+  50% { transform: scaleY(1.8); }
 }
-
-/* 像素风格开心眼睛 - 弯弯眼 */
-.cat-eye-happy { animation: eyeHappy 0.6s infinite steps(2) !important; }
+.cat-eye-happy { animation: eyeHappy 0.8s infinite ease-in-out !important; }
 @keyframes eyeHappy {
-  0%, 100% { transform: scaleY(1); }
-  50% { transform: scaleY(0.3); }
+  0%, 100% { transform: scaleY(1) rotate(0deg); }
+  50% { transform: scaleY(0.6) rotate(-5deg); }
 }
-
-/* 尾巴摇摆 - 像素风格 */
-.cat-tail { animation: tailWag 2s infinite steps(3); transform-origin: 26px 24px; }
-@keyframes tailWag {
-  0%, 100% { transform: rotate(0deg); }
-  33% { transform: rotate(8deg); }
-  66% { transform: rotate(-8deg); }
-}
-
 .sleep-zzz {
   position: absolute;
   top: -8px; right: -2px;
@@ -432,68 +415,63 @@ html, body {
   opacity: 0;
   pointer-events: none;
 }
-.sleep-zzz.active { animation: zzzFloat 2s infinite steps(4); }
+.sleep-zzz.active { animation: zzzFloat 2s infinite ease-in-out; }
 @keyframes zzzFloat {
   0% { opacity: 0; transform: translate(0, 0) scale(0.5); }
-  25% { opacity: 1; }
-  50% { opacity: 1; transform: translate(4px, -8px) scale(0.8); }
-  75% { opacity: 0.8; transform: translate(8px, -16px) scale(1); }
-  100% { opacity: 0; transform: translate(12px, -24px) scale(1.1); }
+  30% { opacity: 1; }
+  100% { opacity: 0; transform: translate(12px, -25px) scale(1.1); }
 }
-.sleep-zzz:nth-child(2).active { animation-delay: 0.5s; }
-.sleep-zzz:nth-child(3).active { animation-delay: 1s; }
+.sleep-zzz:nth-child(2).active { animation-delay: 0.7s; }
+.sleep-zzz:nth-child(3).active { animation-delay: 1.4s; }
 
-/* ========== 多动作动画 - 像素风格 ========== */
-/* 伸懒腰动画 - 像素跳跃 */
+/* ========== 多动作动画 ========== */
+/* 伸懒腰动画 */
 @keyframes catStretch {
   0%, 100% { transform: translateY(0) scaleY(1); }
-  20% { transform: translateY(-2px); }
-  40% { transform: translateY(-4px) scaleY(1.06); }
-  60% { transform: translateY(-2px) scaleY(1.03); }
-  80% { transform: translateY(0) scaleY(1); }
+  30% { transform: translateY(-3px) scaleY(1.08); }
+  60% { transform: translateY(1px) scaleY(0.95); }
 }
-.cat-stretching { animation: catStretch 1.5s steps(5); }
+.cat-stretching { animation: catStretch 1.5s ease-in-out; }
 
-/* 玩球动画 - 像素左右跳跃 */
+/* 玩球动画 */
 @keyframes catPlay {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(2px); }
-  50% { transform: translateX(-2px); }
-  75% { transform: translateX(2px); }
+  0%, 100% { transform: translateX(0) rotate(0deg); }
+  25% { transform: translateX(3px) rotate(5deg); }
+  50% { transform: translateX(-2px) rotate(-3deg); }
+  75% { transform: translateX(2px) rotate(3deg); }
 }
-.cat-playing { animation: catPlay 0.6s steps(4) 3; }
+.cat-playing { animation: catPlay 0.8s ease-in-out 3; }
 
-/* 喝水动画 - 像素低头 */
+/* 喝水动画 */
 @keyframes catDrink {
   0%, 100% { transform: rotate(0deg); }
-  30% { transform: rotate(5deg); }
+  30% { transform: rotate(8deg) translateY(2px); }
   60% { transform: rotate(-3deg); }
 }
-.cat-drinking { animation: catDrink 1s steps(3) 2; }
+.cat-drinking { animation: catDrink 1.2s ease-in-out 2; }
 
-/* 探头动画 - 像素上下 */
+/* 探头动画 */
 @keyframes catPeek {
   0%, 100% { transform: translateY(0); }
-  30% { transform: translateY(-2px); }
-  60% { transform: translateY(-4px); }
-  80% { transform: translateY(-2px); }
+  40% { transform: translateY(-6px); }
+  70% { transform: translateY(-4px); }
 }
-.cat-peeking { animation: catPeek 0.8s steps(4) 2; }
+.cat-peeking { animation: catPeek 1s ease-in-out 2; }
 
-/* 打哈欠动画 - 像素放大 */
+/* 打哈欠动画 */
 @keyframes catYawn {
   0%, 100% { transform: scaleY(1); }
-  40% { transform: scaleY(1.15); }
-  70% { transform: scaleY(1.08); }
+  40% { transform: scaleY(1.3); }
+  70% { transform: scaleY(1.1); }
 }
-.cat-yawning { animation: catYawn 1.2s steps(3); }
+.cat-yawning { animation: catYawn 1.5s ease-in-out; }
 
-/* 晚安/睡觉动画 - 像素呼吸 */
+/* 晚安/睡觉动画 */
 @keyframes catSleep {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(1px); }
+  0%, 100% { transform: translateY(0) scaleY(1); }
+  50% { transform: translateY(1px) scaleY(0.97); }
 }
-.cat-sleeping-anim { animation: catSleep 2s steps(2) infinite; }
+.cat-sleeping-anim { animation: catSleep 2.5s ease-in-out infinite; }
 
 /* ========== 气泡 ========== */
 #speech-bubble {
